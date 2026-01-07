@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Transit & Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <!--
+        <div id="weather" class="weather-container">
+            <div class="loading">Loading weather...</div>
+        </div>
+        -->
+        <div id="clock" class="clock-container">
+            <div class="time"></div>
+            <div class="date"></div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="section bus-section">
+            <h2>Bus Times</h2>
+            <div id="bus-times" class="transit-data">
+                <div class="loading">Loading bus times...</div>
+            </div>
+        </div>
+
+        <div class="section train-section">
+            <h2>Train Times</h2>
+            <div id="train-times" class="transit-data">
+                <div class="loading">Loading train times...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="weather.js"></script>
+    <script src="bus.js"></script>
+    <script src="train.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+
