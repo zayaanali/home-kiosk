@@ -36,4 +36,4 @@ setInterval(() => {
     fetchWeather();
     fetchBusTimes();
     fetchTrainTimes();
-}, 60000);
+}, 30000);
