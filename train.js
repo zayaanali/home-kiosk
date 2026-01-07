@@ -183,8 +183,10 @@ function displayTrainData(arrivals) {
             html += `
                 <div class="transit-item" style="border-left-color: ${lineColor};">
                     <div>
-                        <div class="route-name" style="color: ${lineColor};">${train.route} Line</div>
-                        <div class="destination">To: ${train.destination}</div>
+                        <div class="route-name" style="color: ${lineColor};">
+                            ${train.route} Line
+                            <span class="destination" style="font-size: 0.85em; opacity: 0.8; margin-left: 8px;">${train.destination}</span>
+                        </div>
                     </div>
                     <div class="arrival-time">${train.minutes} min</div>
                 </div>
@@ -201,8 +203,10 @@ function displayTrainData(arrivals) {
             html += `
                 <div class="transit-item" style="border-left-color: ${lineColor};">
                     <div>
-                        <div class="route-name" style="color: ${lineColor};">${train.route} Line</div>
-                        <div class="destination">To: ${train.destination}</div>
+                        <div class="route-name" style="color: ${lineColor};">
+                            ${train.route} Line
+                            <span class="destination" style="font-size: 0.85em; opacity: 0.8; margin-left: 8px;">${train.destination}</span>
+                        </div>
                     </div>
                     <div class="arrival-time">${train.minutes} min</div>
                 </div>

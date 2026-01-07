@@ -92,6 +92,7 @@ async function fetchBusTimes() {
     allPredictions.forEach(pred => {
         const route = pred.rt;
         const direction = pred.rtdir || 'Unknown';
+        const destination = pred.des || '';
         let minutes = pred.prdctdn;
         
         // Handle "DUE" or numeric values
@@ -103,7 +104,7 @@ async function fetchBusTimes() {
             return; // Skip invalid predictions
         }
         
-        const busData = { route, direction, minutes };
+        const busData = { route, direction, destination, minutes };
         
         // Determine direction from rtdir field
         const directionUpper = direction.toUpperCase();
@@ -135,7 +136,10 @@ async function fetchBusTimes() {
             html += `
                 <div class="transit-item" style="border-left-color: ${routeColor};">
                     <div>
-                        <div class="route-name" style="color: ${routeColor};">Route ${bus.route}</div>
+                        <div class="route-name" style="color: ${routeColor};">
+                            #${bus.route}
+                            ${bus.destination ? `<span class="destination" style="font-size: 0.85em; opacity: 0.8; margin-left: 8px;">${bus.destination}</span>` : ''}
+                        </div>
                     </div>
                     <div class="arrival-time">${timeText}</div>
                 </div>
@@ -153,7 +157,10 @@ async function fetchBusTimes() {
             html += `
                 <div class="transit-item" style="border-left-color: ${routeColor};">
                     <div>
-                        <div class="route-name" style="color: ${routeColor};">Route ${bus.route}</div>
+                        <div class="route-name" style="color: ${routeColor};">
+                            #${bus.route}
+                            ${bus.destination ? `<span class="destination" style="font-size: 0.85em; opacity: 0.8; margin-left: 8px;">${bus.destination}</span>` : ''}
+                        </div>
                     </div>
                     <div class="arrival-time">${timeText}</div>
                 </div>
