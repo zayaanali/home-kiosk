@@ -1,38 +1,16 @@
 // Weather API Configuration
-const WEATHER_API_KEY = 'YOUR_WEATHER_API_KEY_HERE'; // Replace with your OpenWeatherMap API key
+const WEATHER_API_KEY = 'ef8e78ee474a4e188b352157260701';
 const WEATHER_LOCATION = 'Chicago';
-
-// Get weather emoji based on icon code
-function getWeatherEmoji(icon) {
-    const iconMap = {
-        '01d': '☀️', '01n': '🌙',
-        '02d': '⛅', '02n': '☁️',
-        '03d': '☁️', '03n': '☁️',
-        '04d': '☁️', '04n': '☁️',
-        '09d': '🌧️', '09n': '🌧️',
-        '10d': '🌦️', '10n': '🌦️',
-        '11d': '⛈️', '11n': '⛈️',
-        '13d': '❄️', '13n': '❄️',
-        '50d': '🌫️', '50n': '🌫️'
-    };
-    return iconMap[icon] || '🌤️';
-}
 
 // Capitalize first letter of string
 function capitalizeFirst(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// Fetch weather data
+// Fetch weather data from weatherapi.com
 async function fetchWeather() {
-    if (WEATHER_API_KEY === 'YOUR_WEATHER_API_KEY_HERE') {
-        document.getElementById('weather').innerHTML = 
-            '<div class="error">Weather API key not configured. Please add your OpenWeatherMap API key in weather.js</div>';
-        return;
-    }
-
     try {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${WEATHER_LOCATION}&appid=${WEATHER_API_KEY}&units=imperial`;
+        const url = `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${WEATHER_LOCATION}&aqi=no`;
         const response = await fetch(url);
         
         if (!response.ok) {
@@ -40,17 +18,13 @@ async function fetchWeather() {
         }
         
         const data = await response.json();
-        const temp = Math.round(data.main.temp);
-        const description = data.weather[0].description;
-        const icon = data.weather[0].icon;
+        const temp = Math.round(data.current.temp_f);
+        const description = data.current.condition.text;
         
         const weatherHTML = `
             <div class="weather-info">
-                <div class="weather-icon">${getWeatherEmoji(icon)}</div>
-                <div>
-                    <div class="weather-temp">${temp}°F</div>
-                    <div class="weather-desc">${capitalizeFirst(description)}</div>
-                </div>
+                <span class="weather-temp">${temp}°F</span>
+                <span class="weather-desc">· ${capitalizeFirst(description)}</span>
             </div>
         `;
         

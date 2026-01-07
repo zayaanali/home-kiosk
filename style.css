@@ -1,3 +1,15 @@
+:root {
+    --bg: #f7f8fb;
+    --card: #ffffff;
+    --header-bg: #e7edf7;
+    --text: #1f2a3d;
+    --muted: #4d5b6b;
+    --border: #dbe4f0;
+    --accent: #9ab7d3;
+    --bus-accent: #9ab7d3;
+    --train-accent: #c9b7f5;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,8 +17,8 @@
 }
 
 body {
-    background: #000000;
-    color: #ffffff;
+    background: var(--bg);
+    color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     margin: 0;
     padding: 0;
@@ -16,37 +28,57 @@ body {
 }
 
 .header {
-    background: #00bcd4;
-    padding: 20px;
+    background: var(--header-bg);
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     gap: 20px;
-}
-
-.weather-container {
-    flex: 1;
-    min-width: 200px;
-    font-size: 1.5rem;
-    font-weight: 600;
+    border-bottom: 1px solid var(--border);
 }
 
 .clock-container {
-    text-align: right;
-    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .time {
-    font-size: 2.5rem;
-    font-weight: bold;
-    line-height: 1.2;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
 }
 
 .date {
-    font-size: 1.2rem;
-    margin-top: 5px;
-    opacity: 0.9;
+    font-size: 1rem;
+    color: var(--muted);
+}
+
+.weather-container {
+    min-width: 200px;
+    text-align: right;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    align-items: baseline;
+    font-size: 1rem;
+}
+
+.weather-temp {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.weather-desc {
+    color: var(--muted);
+    font-weight: 500;
+    text-transform: capitalize;
 }
 
 .main {
@@ -58,38 +90,39 @@ body {
 }
 
 .section {
-    background: #111111;
+    background: var(--card);
     padding: 20px;
-    border-radius: 8px;
-    flex: 1;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
 }
 
 .section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #00bcd4;
-    border-bottom: 2px solid #00bcd4;
-    padding-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
 }
 
 .bus-section h2 {
-    color: #4caf50;
-    border-bottom-color: #4caf50;
+    border-bottom-color: var(--bus-accent);
 }
 
 .train-section h2 {
-    color: #ff9800;
-    border-bottom-color: #ff9800;
+    border-bottom-color: var(--train-accent);
 }
 
 .transit-data {
-    font-size: 1.3rem;
-    line-height: 1.8;
+    font-size: 1.2rem;
+    line-height: 1.6;
 }
 
 .direction-container {
     display: flex;
-    gap: 20px;
+    gap: 18px;
     flex-wrap: wrap;
 }
 
@@ -99,62 +132,52 @@ body {
 }
 
 .direction-heading {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     margin-bottom: 10px;
-    border-bottom: 2px solid;
-    padding-bottom: 5px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 6px;
+    font-weight: 700;
+    color: var(--muted);
 }
 
 .bus-direction {
-    color: #4caf50;
-    border-bottom-color: #4caf50;
+    color: var(--bus-accent);
+    border-bottom-color: var(--bus-accent);
 }
 
 .train-direction {
-    color: #00bcd4;
-    border-bottom-color: #00bcd4;
+    color: var(--train-accent);
+    border-bottom-color: var(--train-accent);
 }
 
 .transit-item {
-    padding: 12px;
-    margin: 8px 0;
-    background: #1a1a1a;
-    border-radius: 4px;
-    border-left: 4px solid #00bcd4;
+    padding: 12px 14px;
+    margin: 10px 0;
+    background: #f3f6fb;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--accent);
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.bus-section .transit-item {
-    border-left-color: #4caf50;
-}
-
-.train-section .transit-item {
-    border-left-color: #ff9800;
+    gap: 12px;
 }
 
 .route-name {
-    font-weight: 600;
-    color: #00bcd4;
-}
-
-.bus-section .route-name {
-    color: #4caf50;
-}
-
-.train-section .route-name {
-    color: #ff9800;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.01em;
 }
 
 .arrival-time {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
 }
 
 .destination {
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 0.95rem;
+    color: var(--muted);
     margin-top: 4px;
 }
 
@@ -163,65 +186,46 @@ body {
     padding: 20px;
     opacity: 0.7;
     font-style: italic;
+    color: var(--muted);
 }
 
 .error {
-    color: #ff5252;
-    padding: 10px;
-    background: #2a0000;
-    border-radius: 4px;
-    border-left: 4px solid #ff5252;
+    color: #b42318;
+    padding: 12px;
+    background: #ffecef;
+    border-radius: 8px;
+    border: 1px solid #f5c2c7;
 }
 
 .no-data {
     text-align: center;
     padding: 20px;
-    opacity: 0.6;
+    opacity: 0.7;
     font-style: italic;
-}
-
-.weather-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.weather-temp {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.weather-desc {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
-
-.weather-icon {
-    font-size: 3rem;
+    color: var(--muted);
 }
 
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
     }
 
     .clock-container {
-        text-align: center;
-    }
-
-    .time {
-        font-size: 2rem;
+        text-align: left;
     }
 
     .weather-container {
-        text-align: center;
+        text-align: left;
+    }
+
+    .direction-container {
+        flex-direction: column;
     }
 
     .transit-item {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
     }
 }
 

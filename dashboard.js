@@ -8,10 +8,12 @@ function updateClock() {
     const dateElement = document.querySelector('.date');
     
     if (timeElement) {
-        const hours = now.getHours().toString().padStart(2, '0');
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        const seconds = now.getSeconds().toString().padStart(2, '0');
-        timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+        timeElement.textContent = now.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        });
     }
     
     if (dateElement) {

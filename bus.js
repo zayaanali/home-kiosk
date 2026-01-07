@@ -136,7 +136,6 @@ async function fetchBusTimes() {
                 <div class="transit-item" style="border-left-color: ${routeColor};">
                     <div>
                         <div class="route-name" style="color: ${routeColor};">Route ${bus.route}</div>
-                        <div class="destination">${bus.direction}</div>
                     </div>
                     <div class="arrival-time">${timeText}</div>
                 </div>
@@ -155,7 +154,6 @@ async function fetchBusTimes() {
                 <div class="transit-item" style="border-left-color: ${routeColor};">
                     <div>
                         <div class="route-name" style="color: ${routeColor};">Route ${bus.route}</div>
-                        <div class="destination">${bus.direction}</div>
                     </div>
                     <div class="arrival-time">${timeText}</div>
                 </div>
