@@ -86,9 +86,20 @@ function calculateMinutes(arrivalTimeString) {
 // Fetch CTA train arrivals
 async function fetchTrainTimes() {
     try {
-        const url = `https://www.transitchicago.com/api/1.0/ttarrivals.aspx?key=${TRAIN_API_KEY}&mapid=${TRAIN_STATION_ID}&outputType=JSON`;
+        const baseUrl = `https://www.transitchicago.com/api/1.0/ttarrivals.aspx?key=${TRAIN_API_KEY}&mapid=${TRAIN_STATION_ID}&outputType=JSON`;
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(baseUrl)}`;
         
-        const data = await fetchWithProxies(url);
+        const response = await fetch(proxyUrl);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.ctatt && data.ctatt.errCd && data.ctatt.errCd !== '0') {
+            throw new Error(data.ctatt.errNm || 'Train API error');
+        }
         
         const arrivals = data.ctatt?.eta || [];
         
@@ -98,12 +109,11 @@ async function fetchTrainTimes() {
             return;
         }
         
-        // Display the data
         displayTrainData(arrivals);
     } catch (error) {
         console.error('Train fetch error:', error);
         document.getElementById('train-times').innerHTML = 
-            `<div class="error">Failed to load train times: ${error.message}. Retrying...</div>`;
+            `<div class="error">Failed to load train times: ${error.message}</div>`;
     }
 }
 
