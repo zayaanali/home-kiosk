@@ -198,7 +198,7 @@ function displayTrainData(arrivals) {
                             <span class="destination" style="font-size: 0.85em; opacity: 0.8; margin-left: 8px;">${train.destination}</span>
                         </div>
                     </div>
-                    <div class="arrival-time">${train.minutes} min</div>
+                    <div class="arrival-time">${train.minutes}${train.minutes === 'Due' || train.minutes === 'N/A' ? '' : ' min'}</div>
                 </div>
             `;
         });
@@ -218,7 +218,7 @@ function displayTrainData(arrivals) {
                             <span class="destination" style="font-size: 0.85em; opacity: 0.8; margin-left: 8px;">${train.destination}</span>
                         </div>
                     </div>
-                    <div class="arrival-time">${train.minutes} min</div>
+                    <div class="arrival-time">${train.minutes}${train.minutes === 'Due' || train.minutes === 'N/A' ? '' : ' min'}</div>
                 </div>
             `;
         });
