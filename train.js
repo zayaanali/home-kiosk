@@ -101,7 +101,7 @@ async function fetchTrainTimes() {
             throw new Error(data.ctatt.errNm || 'Train API error');
         }
         
-        const arrivals = data.ctatt?.eta || [];
+        const arrivals = (data.ctatt && data.ctatt.eta) || [];
         
         if (arrivals.length === 0) {
             document.getElementById('train-times').innerHTML = 
